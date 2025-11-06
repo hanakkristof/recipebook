@@ -8,3 +8,4 @@ const app = initializeApp(firebaseConfig);
 export const auth=getAuth(app)//ez az objektum felel a Google-s login
 
 export const db=getFirestore(app)//Firestore adatbázis inicializálása
+
