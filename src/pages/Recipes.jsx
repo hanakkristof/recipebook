@@ -20,7 +20,7 @@ export const Recipes = () => {
   
   return (
     <div style={{minHeight:"100vh",backgroundColor:"var(--primary)", position:"relative"}}>
-      <div style={{textAlign:"center", display:"flex", alignItems:"center", justifyContent:"center", flexDirection:"column", gap:"15px", color:"var(--background)"}}>
+      <div style={{textAlign:"center", display:"flex", alignItems:"center", justifyContent:"center", flexDirection:"row", flexWrap:"wrap", gap:"15px", color:"var(--background)"}}>
         {recipes && recipes.length>0 && recipes.map(obj=><RecipeCard key={obj.id}{...obj}/>)}
         {recipes && recipes.length == 0 && <h4>Nincsenek receptek feltöltve.</h4>}
       </div>
