@@ -6,8 +6,7 @@ export const Home = () => {
   const navigate = useNavigate()
   return (
     <div className='homeCont'>
-      
-      <div className='myHome' style={{display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center", gap:"15px"}}>
+      <div className='myHome' style={{display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center", gap:"15px", flex:"1"}}>
         <h1 style={{color:"var(--primary)"}}>Recipe Book</h1>
         <button onClick={() => navigate("/recipes")}>Főzz, posztolj, inspirálj !</button>
       </div>

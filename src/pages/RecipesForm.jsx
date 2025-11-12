@@ -84,7 +84,7 @@ export const RecipesForm = () => {
   }
   
   return (
-    <div style={{minHeight:"100vh",backgroundColor:"var(--primary)", position:"relative", display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center" }}>
+    <div style={{minHeight:"calc(100vh - 65px)", width:"100vw",backgroundColor:"var(--primary)", position:"relative", display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center" }}>
       <form onSubmit={handleSubmit} style={{border:"var(--background), solid, 3px",color:'var(--background)', display:"flex", alignItems:"center", justifyContent:"center", flexDirection:"column", gap:"15px",backgroundColor:"var(--secondary)", padding:"15px", borderRadius:"10px" }}>
         <h1 style={{textAlign:"center", fontWeight:"bold"}}>Új recept feltöltése</h1>
         <input className='inputtext' type="text" placeholder='recept neve' value={name} onChange={(e)=>setName(e.target.value)} required/>

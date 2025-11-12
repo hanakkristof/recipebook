@@ -3,12 +3,45 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    height: 100vh;
+    height: calc(100vh - 65px);
     width: 100%;
     display: flex;
     flex-direction: column;
-    
     justify-content: center;
+
+}
+
+::-webkit-scrollbar{
+    width: 10px;
+    
+    background-color: var(--primary);
+}
+
+::-webkit-scrollbar-thumb{
+    background-color: var(--background);
+    border-radius: 5px;
+    border: 1px solid var(--secondary);
+}
+
+button{
+    
+}
+
+.errormsg{
+    color: var(--disabled);
+    padding: 15px;
+}
+
+.totallyborderbottom{
+    border-bottom: 2px dashed var(--secondary);
+}
+
+.container{
+    background-color: var(--primary);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .myHome{
@@ -84,4 +117,8 @@ input[type="file"]{
 #submit-button:disabled{
     color: var(--disabled);
     border: 2px solid var(--disabled);
+}
+
+.container{
+    padding-top: 65px;
 }
