@@ -3,6 +3,7 @@ import { useContext } from 'react'
 import { MyUserContext, MyUserProvider } from '../context/MyUserProvider'
 import { useNavigate } from 'react-router'
 import { useEffect } from 'react'
+import { MyToastify } from './MyToastify'
 
 const SignIn = () => {
   const { signInUser, msg } = useContext(MyUserContext)
@@ -22,7 +23,7 @@ const SignIn = () => {
   }, [msg])
 
   return (
-    <div style={{ minHeight: "100vh", backgroundColor: "var(--primary)", position: "relative", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
+    <div style={{ gap:"5px",minHeight: "100vh", backgroundColor: "var(--primary)", position: "relative", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
       <form onSubmit={handleSubmit} style={{ border: "var(--background), solid, 3px", color: 'var(--background)', display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: "15px", backgroundColor: "var(--secondary)", padding: "15px", borderRadius: "10px" }}>
         <h1>Jelentkezz Be!</h1>
         <span style={{ display: "flex", justifyContent: "space-between", gap: "5px" }}>
@@ -36,8 +37,9 @@ const SignIn = () => {
       </form>
       <div className='error'>
         {msg && msg?.err && <p className='errormsg'>{msg.err}</p>}
-
+        {msg && <MyToastify {...msg}/>}
       </div>
+      <div><a href="#" onClick={()=>navigate("/pwreset")}>Elfelejtett Jelszó?</a></div>
     </div>
 
   )

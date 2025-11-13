@@ -11,14 +11,15 @@ export const Recipes = () => {
   
     const {user} = useContext(MyUserContext)
     console.log(user);
-  const [recipes,setRecipes] = useState([])
+  const [recipes,setRecipes] = useState(null)
+  const [loading, setLoading] = useState(false)
 
 
   const navigate = useNavigate()
   
   
   useEffect(()=>{
-    readRecipes(setRecipes)
+    readRecipes(setRecipes, setLoading)
   },[])
   console.log(recipes);
   
@@ -27,6 +28,7 @@ export const Recipes = () => {
       <div style={{textAlign:"center", display:"flex", alignItems:"center", justifyContent:"center", flexDirection:"column", flexWrap:"wrap", gap:"15px", color:"var(--background)"}}>
         {recipes && recipes.length>0 && recipes.map(obj=><RecipeCard key={obj.id}{...obj}/>)}
         {recipes && recipes.length == 0 && <h4>Nincsenek receptek feltöltve.</h4>}
+        
       </div>
       
         <button onClick={()=>navigate("/addnew")} style={{position:"absolute", bottom:"5px", right:"5px"}}>Recept hozzáadása</button>

@@ -85,6 +85,32 @@ button{
     border-radius: 10%;
 }
 
+button{
+    color: var(--background);
+    background-color: var(--secondary);
+    font-weight: bold;
+}
+
+button:disabled{
+    color: var(--disabled);
+    border: 3px solid var(--disabled);
+    background-color: var(--primary);
+}
+button:disabled:hover{
+    color: var(--disabled);
+    border: 3px solid var(--disabled);
+    background-color: var(--primary);
+}
+
+button:hover{
+    color: var(--accent);
+    border: 3px solid var(--accent);
+}
+
+a{
+    color: var(--accent);
+}
+
 input[type="file"]{
     display: none;
 }
