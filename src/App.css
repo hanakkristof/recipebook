@@ -10,6 +10,7 @@
     justify-content: center;
 
 }
+*{box-sizing: border-box;}
 
 ::-webkit-scrollbar{
     width: 10px;

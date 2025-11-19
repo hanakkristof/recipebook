@@ -24,7 +24,7 @@ export const PwReset = () => {
                     <input name='email' type="email" id='email' /></span>
                 <button>Új jelszó igénylése</button>
             </form>
-            {msg && <MyToastify {...msg} />}
+            
         </div>
     )
 }

@@ -58,7 +58,7 @@ const SignUp = () => {
         <button id='register' disabled={loading}>{loading ? "Regisztráció folyamatban..." : "Regisztrálás"}</button>
       </form>
       {msg &&(msg?.err || msg?.signUp ) && <p className='errormsg'>{msg?.err || msg?.signUp}</p>}
-      {msg && <MyToastify {...msg}/>}
+      
     </div>
   )
 }

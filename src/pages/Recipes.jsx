@@ -31,6 +31,6 @@ export const Recipes = () => {
         
       </div>
       
-        <button onClick={()=>navigate("/addnew")} style={{position:"absolute", bottom:"5px", right:"5px"}}>Recept hozzáadása</button>
+        <button  disabled={!user} onClick={()=>navigate("/addnew")} style={{position:"absolute", top:"5px", right:"5px"}}>Recept hozzáadása</button>
     </div>
   )}

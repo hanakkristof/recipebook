@@ -8,36 +8,32 @@ import { useNavigate } from 'react-router'
 import signUp from './SignUp'
 
 
-export const MyToastify = ({err, signUp,resetPw }) => {
+export const MyToastify = () => {
     const {setMsg,msg} = useContext(MyUserContext)
     const navigate = useNavigate()
     console.log(msg);
     
     useEffect(()=>{
-        if(err){
-            toast.error(err,{position:"top-left"})
-            setMsg({})
+        if(msg?.err){
+            toast.error(msg.err,{position:"top-left"})
+            setMsg(null)
         }
-        else if(signUp){
+        else if(msg?.signUp){
             console.log("LEFUTOT!!!!!!");
             
-            toast.success(signUp,{position:"top-center"})
+            toast.success(msg.signUp,{position:"top-center"})
             setTimeout(()=>{
                 navigate("/signin") 
-                setMsg({})
+                setMsg(null)
             },2000)
         }
-        else if(resetPw){
-            toast.success(resetPw,{position:"top-center"})
-            setMsg({})
+        else if(msg?.resetPw){
+            toast.success(msg.resetPw,{position:"top-center"})
+            setMsg(null)
             navigate("/signin")
         }
-    },[err,signUp,resetPw])
+    },[msg])
 
-  return (
-    
-      <ToastContainer />
-    
-  )
+  return null;
 }
 

@@ -17,8 +17,14 @@ const MyHeader = () => {
         <FaHome size={30} onClick={()=>navigate("/")} style={{color:"var(--background)"}}/>
         {user ? 
     
-      <div style={{display:"flex", alignItems:"center", justifyContent:"center", gap:"5px"}}><RxAvatar size={40} title={user.displayName}/>
-        <button onClick={()=>logOutUser()}>Kijelentkezés</button>
+        <div style={{display:"flex", alignItems:"center", justifyContent:"center", gap:"5px"}}>
+        
+        <span onClick={()=>navigate("/user")}>
+          {user?.photoURL ? <img style={{width:"50px", height:"50px",borderRadius:"50%", objectFit:"cover"}} src={user.photoURL} alt="" /> : <RxAvatar size={40} title={user.displayName} />}
+        
+        </span>
+        
+        <button onClick={()=>logOutUser() && navigate("/recipes")} >Kijelentkezés</button>
       </div>  
       :
       <div style={{display:"flex", gap:"5px"}}>

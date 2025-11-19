@@ -3,7 +3,7 @@ import { useContext } from 'react'
 import { MyUserContext, MyUserProvider } from '../context/MyUserProvider'
 import { useNavigate } from 'react-router'
 import { useEffect } from 'react'
-import { MyToastify } from './MyToastify'
+
 
 const SignIn = () => {
   const { signInUser, msg } = useContext(MyUserContext)
@@ -37,7 +37,7 @@ const SignIn = () => {
       </form>
       <div className='error'>
         {msg && msg?.err && <p className='errormsg'>{msg.err}</p>}
-        {msg && <MyToastify {...msg}/>}
+        
       </div>
       <div><a href="#" onClick={()=>navigate("/pwreset")}>Elfelejtett Jelszó?</a></div>
     </div>

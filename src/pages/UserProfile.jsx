@@ -1,0 +1,52 @@
+import React from 'react'
+import { useContext } from 'react'
+import { MyUserContext } from '../context/MyUserProvider'
+import { useState } from 'react'
+
+export const UserProfile = () => {
+
+    const [file, setFile] = useState(null)
+    const [preview, setPreview] = useState(null)
+    const [loading, setLoading] = useState(false)
+
+    const { user } = useContext(MyUserContext)
+
+    console.log(user);
+    
+    const handleFileChange = (e) => {
+        const selected = e.target.files[0];
+        setFile(selected)
+        if (selected) {
+            setPreview(URL.createObjectURL(selected))
+        }
+    }
+
+    const handleSubmit=(e)=>{
+        e.preventDefault()
+    }
+    return (
+        <div>
+            
+
+            
+            <form style={{ border: "var(--background), solid, 3px", color: 'var(--background)', display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: "15px", backgroundColor: "var(--secondary)", padding: "15px", borderRadius: "10px" }}>
+                <h2>Profil módosítása</h2>
+                <div>
+                <h4>Felhasználónév: {user.displayName}</h4>
+                <h4>Email: {user.email}</h4>
+                {user?.photoURL && <img style={{width:"70px", height:"70px",borderRadius:"50%", objectFit:"cover"}} src={user.photoURL} alt="" />}
+            </div>
+                <label>Új profilkép</label>
+                <label htmlFor="file-upload" className='custom-file-upload'>Upload</label>
+                <input className='inputtext fileinput' type="file" id='file-upload' accept='image/*' onChange={handleFileChange} />
+                <button type='submit' disabled={loading}>{loading ? "Mentés folyamatban" : "Profilkép frissítése"}</button>
+            </form > 
+            <div style={{display:"flex", alignItems:"center", justifyContent:"center", margin:"10px"}}>
+                {preview && <img src={preview} alt='Előnézet' style={{width:"70px", height:"70px",borderRadius:"50%", objectFit:"cover"}} />}
+                </div>   
+            
+        </div>
+    )
+}
+
+
