@@ -2,14 +2,15 @@ import React from 'react'
 import { useContext } from 'react'
 import { MyUserContext } from '../context/MyUserProvider'
 import { useState } from 'react'
+import { useNavigate } from 'react-router'
+import { useEffect } from 'react'
 
 export const UserProfile = () => {
-
     const [file, setFile] = useState(null)
     const [preview, setPreview] = useState(null)
     const [loading, setLoading] = useState(false)
 
-    const { user } = useContext(MyUserContext)
+    const { user,avatarUpdate } = useContext(MyUserContext)
 
     console.log(user);
     
@@ -21,19 +22,29 @@ export const UserProfile = () => {
         }
     }
 
-    const handleSubmit=(e)=>{
+    const handleSubmit=async (e)=>{
         e.preventDefault()
+        setLoading(true)
+        if (!file) return
+        try {
+            await avatarUpdate(file)
+        } catch (error) {
+            console.log(error);
+            
+        }finally{
+            setLoading(false)
+        }
     }
     return (
         <div>
             
 
             
-            <form style={{ border: "var(--background), solid, 3px", color: 'var(--background)', display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: "15px", backgroundColor: "var(--secondary)", padding: "15px", borderRadius: "10px" }}>
+            <form onSubmit={handleSubmit} style={{ border: "var(--background), solid, 3px", color: 'var(--background)', display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: "15px", backgroundColor: "var(--secondary)", padding: "15px", borderRadius: "10px" }}>
                 <h2>Profil módosítása</h2>
                 <div>
-                <h4>Felhasználónév: {user.displayName}</h4>
-                <h4>Email: {user.email}</h4>
+                <h4>Felhasználónév: {user?.displayName}</h4>
+                <h4>Email: {user?.email}</h4>
                 {user?.photoURL && <img style={{width:"70px", height:"70px",borderRadius:"50%", objectFit:"cover"}} src={user.photoURL} alt="" />}
             </div>
                 <label>Új profilkép</label>

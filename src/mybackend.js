@@ -42,6 +42,8 @@ export const addRecipe = async (recipe, file) => {
     }
 }
 
+
+
 //receptek realtime olvasása: onSnapshot()
 export const readRecipes = async (setRecipes, setLoading) => {
     const collectionRef = collection(db, "recipes")
@@ -90,4 +92,10 @@ export const updateRecipe = async (id, updatedData, file) => {
         console.log(error);
 
     }
+}
+
+
+//profilkép feltöltése
+export const profileUpdate=async (file) => {
+    
 }
