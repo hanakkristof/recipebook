@@ -24,13 +24,13 @@ export const Recipes = () => {
   console.log(recipes);
   
   return (
-    <div style={{minHeight:"100vh",backgroundColor:"var(--primary)", position:"relative",padding:"20px", width:"100vw"}}>
-      <div style={{textAlign:"center", display:"flex", alignItems:"center", justifyContent:"center", flexDirection:"column", flexWrap:"wrap", gap:"15px", color:"var(--background)"}}>
+    <div style={{minHeight:"100vh",backgroundColor:"var(--primary)",padding:"20px", width:"100vw"}}>
+      <div style={{textAlign:"center", display:"flex", alignItems:"center", justifyContent:"center", flexDirection:"column", flexWrap:"wrap", gap:"25px", color:"var(--background)"}}>
         {recipes && recipes.length>0 && recipes.map(obj=><RecipeCard key={obj.id}{...obj}/>)}
         {recipes && recipes.length == 0 && <h4>Nincsenek receptek feltöltve.</h4>}
         
       </div>
       
-        <button  disabled={!user} onClick={()=>navigate("/addnew")} style={{position:"absolute", top:"5px", right:"5px"}}>Recept hozzáadása</button>
+        <button  disabled={!user} onClick={()=>navigate("/addnew")} style={{position:"fixed", bottom:"20px", right:"20px"}}>Recept hozzáadása</button>
     </div>
   )}

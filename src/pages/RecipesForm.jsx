@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
-import { FaPlus } from 'react-icons/fa'
+import { FaMinusCircle, FaPlus } from 'react-icons/fa'
 import { IoMdClose } from 'react-icons/io'
 import { useNavigate, useParams } from 'react-router'
 import { addRecipe, readRecipe, updateRecipe } from '../mybackend'
@@ -52,7 +52,7 @@ export const RecipesForm = () => {
     setLoading(true)
 
 
-    let inputData = { name, ingredients, lepesek, category, uid: user.uid, dname: user.displayName }
+    let inputData = { name, ingredients, lepesek, category, uid: user.uid, dname: user.displayName, userPhoto:user.photoURL }
     console.log(inputData);
 
     if (id) {
@@ -79,6 +79,13 @@ export const RecipesForm = () => {
 
   }
 
+  const removeIngredientField = (index) => {
+    console.log(index);
+    const newArr = ingredients.filter((item, idx) => index != idx)
+    setIngredients([...newArr])
+
+  }
+
   const handleFileChange = (e) => {
     const selected = e.target.files[0];
     setFile(selected)
@@ -93,7 +100,9 @@ export const RecipesForm = () => {
         <h1 style={{ textAlign: "center", fontWeight: "bold" }}>Új recept feltöltése</h1>
         <input className='inputtext' type="text" placeholder='recept neve' value={name} onChange={(e) => setName(e.target.value)} required />
         <div style={{ display: "flex", flexDirection: "column", padding: "0px", width: "100%", gap: "3px", alignItems: "center" }}>{ingredients.map((item, index) =>
-          <div style={{ width: "100%" }} key={index}>
+
+          <div style={{ width: "100%", display: "flex", alignItems: "center", gap: "5px" }} key={index}>
+            <FaMinusCircle onClick={() => removeIngredientField(index)} />
             <input className='inputtext' type="text" value={item} onChange={(e) => handleChangeIngredients(index, e.target.value)} required placeholder={`${index + 1}. hozzávaló: `} />
           </div>
         )}

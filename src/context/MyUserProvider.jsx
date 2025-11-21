@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, onAuthStateChanged, sendEmailVerification, sendPasswordResetEmail, signInWithEmailAndPassword, signOut, updateProfile } from 'firebase/auth'
+import { createUserWithEmailAndPassword, deleteUser, EmailAuthProvider, onAuthStateChanged, reauthenticateWithCredential, sendEmailVerification, sendPasswordResetEmail, signInWithEmailAndPassword, signOut, updateProfile } from 'firebase/auth'
 import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
@@ -42,6 +42,7 @@ export const MyUserProvider = ({ children }) => {
 
   const logOutUser = async () => {
     await signOut(auth)
+    setMsg({signIn: false})
 
   }
 
@@ -61,6 +62,20 @@ export const MyUserProvider = ({ children }) => {
     } catch (error) {
       console.log(error);
       setMsg({ err: error.message })
+    }
+  }
+
+  const deleteAccount= async (password) => {
+    try {
+        const credential = EmailAuthProvider.credential(auth.currentUser.email,password)
+        await reauthenticateWithCredential(auth.currentUser,credential)
+        await deleteUser(auth.currentUser)
+        setMsg(null)
+        setMsg({serverMsg:"Felhasználó törölve"})
+    } catch (error) {
+      console.log(error);
+      if(error.code=="auth/invalid-credential") setMsg({err:"Hibás jelszó!"})
+        else setMsg({err:"Hiba történt a fiók törlésekor"})
     }
   }
 
@@ -95,9 +110,10 @@ export const MyUserProvider = ({ children }) => {
     }
   }
 
+
   return (
     <div>
-      <MyUserContext.Provider value={{ user, signUpUser, logOutUser, signInUser, msg, verified, setVerified, setMsg, resetPass,avatarUpdate }}>
+      <MyUserContext.Provider value={{ user, signUpUser, logOutUser, signInUser, msg, verified, setVerified, setMsg, resetPass,avatarUpdate,deleteAccount }}>
         {children}
       </MyUserContext.Provider>
     </div>

@@ -12,6 +12,7 @@ import { ToastContainer } from 'react-toastify'
 import { UserProfile } from './pages/UserProfile'
 import { useContext } from 'react'
 import { MyUserContext } from './context/MyUserProvider'
+import NotFound from './components/NotFound'
 
 function App() {
   const {user} = useContext(MyUserContext)
@@ -32,7 +33,7 @@ function App() {
       <Route path='/signin' element={<SignIn/>}/>
       <Route path='/pwreset' element={<PwReset/>}/>
       <Route path='/user' element={user? <UserProfile/> : <Home/>}/>
-      
+      <Route path='/*' element={<NotFound/>}/>
     </Routes>
     </div>
   )

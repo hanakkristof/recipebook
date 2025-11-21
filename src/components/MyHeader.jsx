@@ -14,9 +14,10 @@ const MyHeader = () => {
     
     <div className='totallyborderbottom' style={{position:"fixed",left:"0",top:"0", zIndex:"1000",width:"100vw", backgroundColor:"var(--primary )", height:"65px"}}>
       <div style={{display:"flex", justifyContent:"space-between", alignItems:"center", height:"100%", padding:"20px"}}>
-        <FaHome size={30} onClick={()=>navigate("/")} style={{color:"var(--background)"}}/>
+        <FaHome className='icons' size={30} onClick={()=>navigate("/")} />
+          
         {user ? 
-    
+        
         <div style={{display:"flex", alignItems:"center", justifyContent:"center", gap:"5px"}}>
         
         <span onClick={()=>navigate("/user")}>

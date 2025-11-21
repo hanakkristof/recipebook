@@ -32,6 +32,11 @@ export const MyToastify = () => {
             setMsg(null)
             navigate("/signin")
         }
+        else if(msg?.serverMsg){
+            toast.success(msg.serverMsg, {position:"bottom-center"})
+            setMsg(null)
+                
+        }
     },[msg])
 
   return null;
