@@ -30,7 +30,7 @@ export const UserProfile = () => {
             await avatarUpdate(file)
         } catch (error) {
             console.log(error);
-
+            
         } finally {
             setLoading(false)
         }

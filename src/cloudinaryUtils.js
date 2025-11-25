@@ -24,3 +24,17 @@ export const uploadImage=async (file) => {
         return null
     }
 }
+//törlés ha ismerjük a public_id-t  
+export const deleteImage= async (public_id)=>{
+    console.log(public_id);
+    try {
+        const resp = await axios.post(API_URL + "deleteImage", {public_id})
+        console.log(resp.data);
+        return resp
+        
+    } catch (error) {
+        console.log("A kép törlése sikertelen", error);
+        
+    }
+    
+}

@@ -1,8 +1,9 @@
 import axios from "axios";
 import { RecipesForm } from "./pages/RecipesForm";
-import { addDoc, collection, deleteDoc, doc, getDoc, onSnapshot, orderBy, query, serverTimestamp, Timestamp, updateDoc } from "firebase/firestore";
+import { addDoc, collection, deleteDoc, doc, getDoc, onSnapshot, orderBy, query, serverTimestamp, setDoc, Timestamp, updateDoc } from "firebase/firestore";
 import { db } from "./firebaseApp"
 import imageCompression from "browser-image-compression";
+import { deleteImage } from "./cloudinaryUtils";
 
 const apikey = import.meta.env.VITE_IMGBB_API_KEY
 const imgbburl = "https://api.imgbb.com/1/upload?key=" + apikey
@@ -93,6 +94,33 @@ export const updateRecipe = async (id, updatedData, file) => {
 
     }
 }
+
+// új gyűjteményt kell az avatar public_id tárolására:
+export const updateAvatar=async(uid,public_id)=>{
+    let oldPublicId = null
+    try {
+        const docRef=doc(db, "avatars",uid)//egy dokumentum referenciája
+        const docSnap= await getDoc(docRef);
+        if(!docSnap.exists()){
+            await setDoc(docRef,{uid,public_id})
+        }else{
+            oldPublicId =docSnap.data().public_id
+            await updateDoc(docRef,{public_id})
+            
+        }
+        if(oldPublicId){
+            await deleteImage(oldPublicId)
+        }
+
+    } catch (error) {
+        console.log("Avatár törlése sikertelen", error);
+        
+    }
+}
+
+
+
+
 
 
 //profilkép feltöltése
