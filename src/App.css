@@ -20,6 +20,19 @@
     color: var(--accent);
 }
 
+.deleteButton{
+    color: var(--disabled);
+    max-width: 100px;
+    background-color: var(--primary);
+    border: 3px solid var(--disabled);
+}
+
+.deleteButton:hover{
+    font-weight: bold;
+    color: rgb(224, 37, 37);
+    border: 4px solid rgb(224, 37, 37);
+}
+
 ::-webkit-scrollbar{
     width: 10px;
     
@@ -32,9 +45,6 @@
     border: 1px solid var(--secondary);
 }
 
-button{
-    
-}
 
 .errormsg{
     color: var(--disabled);

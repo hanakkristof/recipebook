@@ -4,6 +4,7 @@ import { MyUserContext } from '../context/MyUserProvider'
 import { useState } from 'react'
 import { useNavigate } from 'react-router'
 import { useEffect } from 'react'
+import { deleteAvatar } from '../mybackend'
 
 export const UserProfile = () => {
     const [file, setFile] = useState(null)
@@ -40,6 +41,7 @@ export const UserProfile = () => {
         if (window.confirm("Biztosan kiszeretnéd törölni a fiókodat?")) {
             const pw = prompt("Add meg a jelszavadat a fiók törléséhez!")
             await deleteAccount(pw)
+            await deleteAvatar(user.uid)
         }
     }
 
@@ -63,7 +65,7 @@ export const UserProfile = () => {
 
             </div>
 
-            <button onClick={handleDelete} style={{ color: "var(--disabled)", maxWidth: "100px", backgroundColor: "var(--primary)", border: "3px solid var(--disabled)" }}>
+            <button onClick={handleDelete} className='deleteButton'>
                 Fiók törlése
             </button>
 
