@@ -115,7 +115,7 @@ export const RecipesForm = () => {
         <button id="submit-button" type='submit' disabled={loading || (!file && !preview)}>Mentés</button>
       </form>
       {loading && <div style={{ color: "var(--accent)" }}>loading...</div>}
-      <IoMdClose onClick={() => navigate("/recipes")} style={{ color: 'var(--disabled)', backgroundColor: "var(--primary)", position: "absolute", top: "5px", left: "5px", fontSize: "2rem", border: "3px solid var(--disabled)", borderRadius: "5px" }} />
+      <IoMdClose className='deleteButton' onClick={() => navigate("/recipes")} style={{  position: "absolute", top: "5px", left: "5px", fontSize: "2rem", borderRadius: "5px" }} />
     </div>
   )
 }

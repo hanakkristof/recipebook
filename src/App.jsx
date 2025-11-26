@@ -1,5 +1,5 @@
 import './App.css'
-import { Route, Routes, useNavigate } from 'react-router'
+import { Route, Routes, useLocation, useNavigate } from 'react-router'
 import { Recipes } from './pages/Recipes'
 import { RecipesForm } from './pages/RecipesForm'
 import { Home } from './pages/Home'
@@ -16,6 +16,7 @@ import NotFound from './components/NotFound'
 
 function App() {
   const {user} = useContext(MyUserContext)
+  
 
 
 

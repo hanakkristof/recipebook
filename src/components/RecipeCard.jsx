@@ -14,7 +14,7 @@ export const RecipeCard = ({id,name,lepesek,ingredients,url,delete_url, dname, u
 
 
   return (
-    <div style={{ gap:"12px",padding:"15px", maxWidth:"500px", border:"2px solid var(--background)",borderRadius:"15px", display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center"}}>
+    <div className='recept' style={{backgroundColor:"var(--primary)", gap:"12px",padding:"15px", maxWidth:"500px", border:"2px solid var(--background)",borderRadius:"15px", display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center"}}>
       <h1 style={{fontWeight:"bold", textDecoration:"underline"}}>{name}</h1>
       <h5><span style={{display:"flex", alignItems:"center", justifyContent:"center", gap:"15px"}}>Uploaded by: {dname} {userPhoto && <img style={{objectFit:"cover", aspectRatio:"1/1",width:"50px", height:"50px",borderRadius:"50%", objectFit:"cover"}} src={userPhoto} alt="profilkép" />}</span></h5>
         <div style={{display:"flex", flexWrap:"wrap", gap:"10px", flexDirection:"row", alignItems:"center", justifyContent:"center", textAlign:"center", paddingTop:"15px"}}>{ingredients.map(obj=> <p style={{border:"2px, solid, var(--background)",padding:"2px", borderRadius:"5px", backgroundColor:"var(--secondary)" ,textTransform:"capitalize"}}>{obj}</p>)}</div>
