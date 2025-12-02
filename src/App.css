@@ -191,3 +191,24 @@ input[type="file"]{
 .container{
     padding-top: 65px;
 }
+
+.addBtn{
+    
+    position:fixed;
+    bottom:20px;
+    right:20px;
+}
+.addBtnHead{
+    visibility: hidden;
+}
+
+@media only screen and (max-width:850px) {
+    .addBtn{
+        display: none;
+    }
+}
+@media only screen and (max-width:850px) {
+    .addBtnHead{
+        visibility: visible;
+    }
+}
